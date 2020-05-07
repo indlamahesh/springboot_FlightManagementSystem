@@ -28,10 +28,7 @@ public class FlightBookingServiceImpl implements FlightBookingService {
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	@Override
 	public String addBooking(BookingForm bookingForm) throws FlightBookingException {
-		System.out.println(bookingForm.getScheduleFlightId());
        ScheduledFlight schflight =  dao.viewFlightSchedule(bookingForm.getScheduleFlightId());
-       System.out.println("service " + schflight);
-       System.out.println("bookingForm " + bookingForm);
        User user = dao.viewUser(bookingForm.getContactNo());
        Booking booking = null;
        String bookingId="";
@@ -64,7 +61,6 @@ public class FlightBookingServiceImpl implements FlightBookingService {
 	public String generateBookingId(int schFlightId) {
 		long count = dao.countBookingForSchedule(schFlightId)+1;
 		String bookingId = dao.viewFlightSchedule(schFlightId).getFlight().getFlightCode() + schFlightId + count;
-		System.out.println("Booking ID " + bookingId);
 		return bookingId;
 	}
 

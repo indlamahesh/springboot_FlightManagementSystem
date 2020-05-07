@@ -39,7 +39,7 @@ public class FlightBookingtRestController {
 	
 	@CrossOrigin(origins = "http://localhost:4200")
 	@DeleteMapping( value="/cancelbooking/{bookingid}")
-	public FlightMessage addBooking(@PathVariable("bookingid") String bookingId, HttpServletRequest req
+	public FlightMessage cancelBooking(@PathVariable("bookingid") String bookingId, HttpServletRequest req
 			) throws FlightBookingException, LoginException {
 
 		String result=null;
